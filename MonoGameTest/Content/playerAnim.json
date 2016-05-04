@@ -1,0 +1,215 @@
+﻿{
+    "allstates": [
+        {
+            "state": "walkDown",
+            "frames": [
+                {
+                    "SourceRectangle": {
+                        "X": 0,
+                        "Y": 0,
+                        "Width": 16,
+                        "Height": 16
+                    },
+                    "Duration": "00:00:00.2500000"
+                },
+                {
+                    "SourceRectangle": {
+                        "X": 16,
+                        "Y": 0,
+                        "Width": 16,
+                        "Height": 16
+                    },
+                    "Duration": "00:00:00.2500000"
+                },
+                {
+                    "SourceRectangle": {
+                        "X": 0,
+                        "Y": 0,
+                        "Width": 16,
+                        "Height": 16
+                    },
+                    "Duration": "00:00:00.2500000"
+                },
+                {
+                    "SourceRectangle": {
+                        "X": 32,
+                        "Y": 0,
+                        "Width": 16,
+                        "Height": 16
+                    },
+                    "Duration": "00:00:00.2500000"
+                }
+            ]
+        },
+        {
+            "state": "walkUp",
+            "frames": [
+                {
+                    "SourceRectangle": {
+                        "X": 144,
+                        "Y": 0,
+                        "Width": 16,
+                        "Height": 16
+                    },
+                    "Duration": "00:00:00.2500000"
+                },
+                {
+                    "SourceRectangle": {
+                        "X": 160,
+                        "Y": 0,
+                        "Width": 16,
+                        "Height": 16
+                    },
+                    "Duration": "00:00:00.2500000"
+                },
+                {
+                    "SourceRectangle": {
+                        "X": 144,
+                        "Y": 0,
+                        "Width": 16,
+                        "Height": 16
+                    },
+                    "Duration": "00:00:00.2500000"
+                },
+                {
+                    "SourceRectangle": {
+                        "X": 176,
+                        "Y": 0,
+                        "Width": 16,
+                        "Height": 16
+                    },
+                    "Duration": "00:00:00.2500000"
+                }
+            ]
+        },
+        {
+            "state": "walkLeft",
+            "frames": [
+                {
+                    "SourceRectangle": {
+                        "X": 48,
+                        "Y": 0,
+                        "Width": 16,
+                        "Height": 16
+                    },
+                    "Duration": "00:00:00.2500000"
+                },
+                {
+                    "SourceRectangle": {
+                        "X": 64,
+                        "Y": 0,
+                        "Width": 16,
+                        "Height": 16
+                    },
+                    "Duration": "00:00:00.2500000"
+                },
+                {
+                    "SourceRectangle": {
+                        "X": 48,
+                        "Y": 0,
+                        "Width": 16,
+                        "Height": 16
+                    },
+                    "Duration": "00:00:00.2500000"
+                },
+                {
+                    "SourceRectangle": {
+                        "X": 80,
+                        "Y": 0,
+                        "Width": 16,
+                        "Height": 16
+                    },
+                    "Duration": "00:00:00.2500000"
+                }
+            ]
+        },
+        {
+            "state": "walkRight",
+            "frames": [
+                {
+                    "SourceRectangle": {
+                        "X": 96,
+                        "Y": 0,
+                        "Width": 16,
+                        "Height": 16
+                    },
+                    "Duration": "00:00:00.2500000"
+                },
+                {
+                    "SourceRectangle": {
+                        "X": 112,
+                        "Y": 0,
+                        "Width": 16,
+                        "Height": 16
+                    },
+                    "Duration": "00:00:00.2500000"
+                },
+                {
+                    "SourceRectangle": {
+                        "X": 96,
+                        "Y": 0,
+                        "Width": 16,
+                        "Height": 16
+                    },
+                    "Duration": "00:00:00.2500000"
+                },
+                {
+                    "SourceRectangle": {
+                        "X": 128,
+                        "Y": 0,
+                        "Width": 16,
+                        "Height": 16
+                    },
+                    "Duration": "00:00:00.2500000"
+                }
+            ]
+        },
+        {
+            "state": "death",
+            "frames": [
+                {
+                    "SourceRectangle": {
+                        "X": 0,
+                        "Y": 0,
+                        "Width": 16,
+                        "Height": 16
+                    },
+                    "Duration": "00:00:05.0000000"
+                },
+                {
+                    "SourceRectangle": {
+                        "X": 192,
+                        "Y": 0,
+                        "Width": 16,
+                        "Height": 16
+                    },
+                    "Duration": "00:00:05.0000000",
+                    "PlayOnce": true
+                }
+            ]
+        },
+        {
+            "state": "default",
+            "frames": [
+                {
+                    "SourceRectangle": {
+                        "X": 0,
+                        "Y": 0,
+                        "Width": 16,
+                        "Height": 16
+                    },
+                    "Duration": "00:00:00.5000000"
+                },
+                {
+                    "SourceRectangle": {
+                        "X": 192,
+                        "Y": 0,
+                        "Width": 16,
+                        "Height": 16
+                    },
+                    "Duration": "00:00:00.5000000"
+                }
+            ]
+        }
+    ]
+}

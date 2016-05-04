@@ -1,0 +1,114 @@
+﻿{
+    "allstates": [
+        {
+            "state": "walkDown",
+            "frames": [
+                {
+                    "SourceRectangle": {
+                        "X": 248,
+                        "Y": 248,
+                        "Width": 124,
+                        "Height": 124
+                    },
+                    "Duration": "00:00:00.2500000"
+                },
+                {
+                    "SourceRectangle": {
+                        "X": 372,
+                        "Y": 248,
+                        "Width": 124,
+                        "Height": 124
+                    },
+                    "Duration": "00:00:00.2500000"
+                }
+            ]
+        },
+        {
+            "state": "walkUp",
+            "frames": [
+                {
+                    "SourceRectangle": {
+                        "X": 248,
+                        "Y": 248,
+                        "Width": 124,
+                        "Height": 124
+                    },
+                    "Duration": "00:00:00.2500000"
+                },
+                {
+                    "SourceRectangle": {
+                        "X": 372,
+                        "Y": 248,
+                        "Width": 124,
+                        "Height": 124
+                    },
+                    "Duration": "00:00:00.2500000"
+                }
+            ]
+        },
+        {
+            "state": "walkLeft",
+            "frames": [
+                {
+                    "SourceRectangle": {
+                        "X": 248,
+                        "Y": 372,
+                        "Width": 124,
+                        "Height": 124
+                    },
+                    "Duration": "00:00:00.2500000"
+                },
+                {
+                    "SourceRectangle": {
+                        "X": 372,
+                        "Y": 372,
+                        "Width": 124,
+                        "Height": 124
+                    },
+                    "Duration": "00:00:00.2500000"
+                }
+            ]
+        },
+        {
+            "state": "walkRight",
+            "frames": [
+                {
+                    "SourceRectangle": {
+                        "X": 248,
+                        "Y": 372,
+                        "Width": 124,
+                        "Height": 124
+                    },
+                    "Duration": "00:00:00.2500000"
+                },
+                {
+                    "SourceRectangle": {
+                        "X": 372,
+                        "Y": 372,
+                        "Width": 124,
+                        "Height": 124
+                    },
+                    "Duration": "00:00:00.2500000"
+                }
+            ]
+        },
+        {
+            "state": "death",
+            "frames": [] //ther is no death for fluttershy
+        },
+        {
+            "state": "default",
+            "frames": [
+                {
+                    "SourceRectangle": {
+                        "X": 372,
+                        "Y": 248,
+                        "Width": 124,
+                        "Height": 124
+                    },
+                    "Duration": "00:00:00.5000000"
+                }
+            ]
+        }
+    ]
+}
