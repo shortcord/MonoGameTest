@@ -72,7 +72,13 @@ namespace MonoGameTest.Entities {
                 Health = 0f;
             }
 
-            if ((mouse.RightButton == ButtonState.Pressed)) {
+            if (keyboard.IsKeyDown(Keys.P) && !pastKeyboardState.IsKeyDown(Keys.P)) {
+                myGame.gfxManger.PreferredBackBufferWidth = 1920;
+                myGame.gfxManger.PreferredBackBufferHeight = 1080;
+                myGame.gfxManger.ToggleFullScreen();
+            }
+
+                if ((mouse.RightButton == ButtonState.Pressed)) {
                 if (keyboard.IsKeyDown(Keys.LeftShift) || keyboard.IsKeyDown(Keys.RightShift)) {
                     for (int i = 0; i <= 5; i++) {
                         //myGame.Entities.Add(new BlobEntity(myGame));

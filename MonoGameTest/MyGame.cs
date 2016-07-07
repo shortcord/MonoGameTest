@@ -28,7 +28,7 @@ using Scenes;
 namespace MonoGameTest {
 
     public class MyGame : Game {
-        private GraphicsDeviceManager gfxManger;
+        public GraphicsDeviceManager gfxManger;
         private SpriteBatch spriteBatch;
         private IReadOnlyDictionary<string, IScene> Scenes { get; set; }
         private IScene currentScene { get; set; }
@@ -47,6 +47,10 @@ namespace MonoGameTest {
 #endif
             gfxManger.PreferredBackBufferWidth = 1600;
             gfxManger.PreferredBackBufferHeight = 800;
+            gfxManger.IsFullScreen = false;
+            gfxManger.HardwareModeSwitch = true;
+            gfxManger.PreferMultiSampling = true;
+            gfxManger.SynchronizeWithVerticalRetrace = false;
             gfxManger.ApplyChanges();
 
             Window.ClientSizeChanged += WindowSizeChanged;

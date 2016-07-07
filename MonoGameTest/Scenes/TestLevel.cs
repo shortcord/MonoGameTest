@@ -18,13 +18,13 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using Entities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGameTest;
 using MonoGameTest.Entities;
+using Collections;
 
 namespace Scenes {
 
@@ -35,7 +35,7 @@ namespace Scenes {
         public Vector2 PlayerSpawn { get; private set; }
         public ICamera PlayerCamera { get; private set; }
 
-        private ConcurrentBag<IEntity> entitiesToDraw { get; set; }
+        private EntityCollection entitiesToDraw { get; set; }
         private MyGame myGame { get; set; }
 
         public TestLevel(MyGame game) {
@@ -43,7 +43,7 @@ namespace Scenes {
             ID = 0;
             Name = "Dev Level";
             EnemySpawns = new Dictionary<int, IEntity>();
-            entitiesToDraw = new ConcurrentBag<IEntity>();
+            entitiesToDraw = new EntityCollection();
             PlayerSpawn = Vector2.Zero;
         }
 
@@ -67,12 +67,9 @@ namespace Scenes {
 
             foreach (IEntity ent in entitiesToDraw) {
                 if (!ent.Spawned) { ent.Spawn(); }
-
-                if (ent.Kind == Kind.Player) {
-                    PlayerCamera = ent.Camera;
-                    break;
-                }
             }
+
+            PlayerCamera = entitiesToDraw.Get<FlutterCow>().Camera;
         }
 
         public void Update(GameTime gameTime) {

@@ -54,6 +54,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\EntityCollection.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\FlutterCow.cs" />
     <Compile Include="Program.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Extensions\MouseExtensions.cs" />
     <Compile Include="Entities\BlobEntity.cs" />
     <Compile Include="Scenes\IScene.cs" />
+    <Compile Include="Scenes\MainMenu.cs" />
     <Compile Include="Scenes\TestLevel.cs" />
     <Compile Include="Scenes\SceneDepth.cs" />
     <Compile Include="Scenes\ICamera.cs" />
