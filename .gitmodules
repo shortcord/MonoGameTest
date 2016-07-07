@@ -1,3 +1,6 @@
 [submodule "MonoGame"]
 	path = MonoGame
 	url = https://github.com/teh-random-name/MonoGame.git
+[submodule "FarseerPhysics_3.5"]
+	path = FarseerPhysics_3.5
+	url = https://github.com/teh-random-name/FarseerPhysics.git
