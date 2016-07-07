@@ -5,8 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using NewGame.UI;
 using NewGame.Engine;
+using ShortCord.MonoGame;
 
 namespace NewGame {
 
@@ -17,6 +19,7 @@ namespace NewGame {
         SpriteBatch uiSpriteBatch;
 
         Button btn;
+        Input input;
 
         public Game() {
             IsMouseVisible = true;
@@ -28,10 +31,25 @@ namespace NewGame {
             ServiceManager.AddService(new GraphicsDeviceManager(this));
             ServiceManager.AddService(Content); //ContentManager
 
+            input = new Input();
+
+            input.KeyPressedEvent += Input_KeyPressedEvent;
+            input.MouseStateChanged += Input_MouseStateChanged;
+
             graphicsDeviceManager = ServiceManager.GetService<GraphicsDeviceManager>();
             graphicsDeviceManager.PreferredBackBufferWidth = 800;
             graphicsDeviceManager.PreferredBackBufferHeight = 600;
             graphicsDeviceManager.ApplyChanges();            
+        }
+
+        private void Input_MouseStateChanged(object sender, MouseState e) {
+            Console.WriteLine(e.PositionV);
+        }
+
+        private void Input_KeyPressedEvent(object sender, Keys[] e) {
+            foreach (var key in e) {
+                Console.WriteLine(key);
+            }
         }
 
         protected override void Initialize() {
@@ -57,6 +75,7 @@ namespace NewGame {
         }
 
         protected override void Update(GameTime gameTime) {
+            input.Update(gameTime.ElapsedGameTime.Seconds);
             base.Update(gameTime);
         }
 
