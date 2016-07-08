@@ -62,6 +62,8 @@ namespace ShortCord.MonoGame {
         float accumlator, delta;
 
         protected override void Update(GameTime gameTime) {
+            //implementation credit @ Quincy9000
+            //https://github.com/Quincy9000/QuincyGameEnginePractice/blob/master/Code/Engine/HelperClasses/Scene.cs#L98
             accumlator += delta = MathHelper.Clamp(gameTime.ElapsedGameTime.TotalSeconds.ToFloat(), 0f, .25f); //add to accumlator before calling update
             
             //call level update first
