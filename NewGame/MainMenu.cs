@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
-using NewGame.UI;
 using ShortCord.MonoGame;
+using ShortCord.MonoGame.Ui;
 using ShortCord.MonoGame.Components;
 
 namespace NewGame {
@@ -21,11 +21,25 @@ namespace NewGame {
         }
 
         public override void Start() {
-            btn = new Button();
+            btn = new Button("Example Button");
+            btn.Start();
+            btn.Clicked += (sender, args) => {
+                Console.WriteLine($"[{((Button)sender).Name}] clicked :D");
+            };
+            btn.MouseEntered += (sender, args) => {
+                Console.WriteLine($"[{((Button)sender).Name}] mouse entered!");
+            };
+            btn.MouseExited += (sender, args) => {
+                Console.WriteLine($"[{((Button)sender).Name}] mouse left :(");
+            };
         }
 
         public override void LoadContent() {
             btn?.LoadContent();
+        }
+
+        public override void FixedUpdate(float? delta) {
+            btn.FixedUpdate(delta);
         }
 
         public override void GameDraw(SpriteBatch spriteBatch) {

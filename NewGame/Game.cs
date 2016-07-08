@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using NewGame.UI;
 using ShortCord.MonoGame;
 using ShortCord.MonoGame.Extensions;
+using System.Diagnostics;
 
 namespace NewGame {
 
@@ -23,19 +23,14 @@ namespace NewGame {
             CurrentLevel = new MainMenu();
 
         }
-
-
+        
         protected override void Initialize() {
             GameComponents.Add(input = new Input());
-            
+            ServiceManager.AddService(input);
+
             input.KeyPressedEvent += Input_KeyPressedEvent;
-            input.MouseStateChanged += Input_MouseStateChanged;
 
             base.Initialize();
-        }
-
-        void Input_MouseStateChanged(object sender, MouseState e) {
-            Console.WriteLine(e.PositionV);
         }
 
         void Input_KeyPressedEvent(object sender, Keys[] e) {
