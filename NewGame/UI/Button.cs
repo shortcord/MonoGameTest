@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ShortCord.MonoGame;
+using ShortCord.MonoGame.Components;
 
 namespace NewGame.UI {
-    public class Button : IUiItem {
-
-        public event EventHandler OnClick;
+    public class Button : GameObject {
 
         public Rectangle RenderRectangle {
             get { return renderRectangle; }
@@ -19,7 +19,13 @@ namespace NewGame.UI {
 
         Texture2D texture;
 
-        public Button() {
+        volatile bool isReady;
+
+        public Button() : base() {
+            UiDrawEnabled = true;
+        }
+
+        public override void LoadContent() {
             RenderRectangle = new Rectangle(5, 5, 80, 40);
             texture = new Texture2D(ServiceManager.GetService<GraphicsDevice>(), 20, 60);
             Color[] colorData = new Color[RenderRectangle.Width * RenderRectangle.Height];
@@ -27,15 +33,13 @@ namespace NewGame.UI {
                 colorData[i] = Color.White;
             }
             texture.SetData(colorData);
+
+            isReady = true;
         }
 
-
-        public void Draw(SpriteBatch spriteBatch) {
-            spriteBatch.Draw(texture, renderRectangle, Color.White);
-        }
-
-        public void Update(float deltaTime) {
-            
+        public override void UiDraw(UiSpriteBatch spriteBatch) {
+            if (isReady)
+                spriteBatch.Draw(texture, renderRectangle, Color.White);            
         }
     }
 }

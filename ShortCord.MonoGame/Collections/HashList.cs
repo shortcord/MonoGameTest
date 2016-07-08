@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NewGame.Engine;
 
-namespace NewGame.Collections {
+namespace ShortCord.MonoGame.Collections {
 
     public class HashListItem {
         public HashListItem(object obj) {
@@ -48,17 +44,6 @@ namespace NewGame.Collections {
         public int Count { get { return backingList.Count; } }
 
         public bool IsReadOnly { get { return false; } }
-
-        public void Add(object item) {
-            Type itemT = item.GetType();
-            for (int i = 0; i < Count; i++) {
-                if (itemT == this[i].Type) {
-                    throw new InvalidOperationException($"Can not add more than one of {itemT}");
-                }
-            }
-
-            backingList.Add(new HashListItem(item));
-        }
 
         public void Add(HashListItem item) {
             for (int i = 0; i < Count; i++) {

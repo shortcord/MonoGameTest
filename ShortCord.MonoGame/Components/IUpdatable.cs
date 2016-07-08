@@ -1,4 +1,6 @@
-﻿namespace ShortCord.MonoGame.Components {
+﻿using Microsoft.Xna.Framework;
+
+namespace ShortCord.MonoGame.Components {
     public interface IUpdatable {
         bool UpdateEnabled { get; }
         bool FixedUpdateEnabled { get; }

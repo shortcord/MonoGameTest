@@ -1,17 +1,17 @@
 ﻿using System;
-using NewGame.Collections;
-using NewGame.Engine;
+using Microsoft.Xna.Framework;
+using ShortCord.MonoGame.Collections;
 
-namespace NewGame {
+namespace ShortCord.MonoGame {
     public static class ServiceManager {
-        static NewGame.Game gameRef;
+        static GameWrapper gameRef;
         static HashList services;
 
-        public static NewGame.Game Game {
+        public static GameWrapper Game {
             get { return gameRef; }
             set { if (gameRef != null) { gameRef = value; } }
         }
-
+        
         public static void AddService<T>(T service) where T : class {
             if (services == null) { services = new HashList(); }
             services.Add(new HashListItem(service));

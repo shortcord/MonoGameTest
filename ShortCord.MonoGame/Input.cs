@@ -32,14 +32,15 @@ namespace ShortCord.MonoGame {
         List<Keys> keysCache;
         #endregion
 
-        public Input() : base() {
+        public Input() {
             keysCache = Enum.GetValues(typeof(Keys)).Cast<Keys>().ToList();
 
             keyboardStates = new KeyboardState[2];
             mouseStates = new MouseState[2];
-            FixedUpdateEnabled = false;
+            UpdateEnabled = true;
             //gamePadStates = new GamePadState[GamePad.MaximumGamePadCount];
         }
+
 
         public override void Update(float delta) {
             //Invoke events before we update the states

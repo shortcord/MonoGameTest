@@ -1,16 +1,11 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 
 namespace ShortCord.MonoGame.Components {
-    public abstract class Drawable : IDrawable {
-        public bool GameDrawEnabled { get; protected set; }
-        public bool UiDrawEnabled { get; protected set; }
-
-        protected Drawable() {
-            GameDrawEnabled = true;
-            UiDrawEnabled = true;
-        }
+    public abstract class Drawable : IDrawable, IComponent {
+        public bool GameDrawEnabled { get; protected set; } = false;
+        public bool UiDrawEnabled { get; protected set; } = false;
 
         public virtual void GameDraw(SpriteBatch spriteBatch) { }
-        public virtual void UiDraw(SpriteBatch spriteBatch) { }
+        public virtual void UiDraw(UiSpriteBatch spriteBatch) { }
     }
 }
