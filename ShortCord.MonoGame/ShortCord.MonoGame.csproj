@@ -61,6 +61,7 @@
     <Compile Include="UiSpriteBatch.cs" />
     <Compile Include="Ui\Button.cs" />
     <Compile Include="Ui\IUiElement.cs" />
+    <Compile Include="Ui\Label.cs" />
     <Compile Include="Ui\UiObject.cs" />
   </ItemGroup>
   <ItemGroup>

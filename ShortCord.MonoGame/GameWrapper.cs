@@ -128,7 +128,7 @@ namespace ShortCord.MonoGame {
         }
 
         protected void UiDraw() {
-            uiSpriteBatch.Begin();
+            uiSpriteBatch.Begin(SpriteSortMode.FrontToBack);
 
             if (CurrentLevel != null && CurrentLevel.UiDrawEnabled) {
                 CurrentLevel?.UiDraw(uiSpriteBatch);

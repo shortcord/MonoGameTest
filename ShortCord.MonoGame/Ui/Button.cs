@@ -10,26 +10,57 @@ using Microsoft.Xna.Framework.Graphics;
 namespace ShortCord.MonoGame.Ui {
     public class Button : UiObject {
 
-        public Button(string name = "New Button") : base() {
+        public Button(
+            string name = "New Button", 
+            bool fitToText = false, 
+            Point? size = null, 
+            Point? position = null) 
+            : base(size, position) {
+            _fitToText = fitToText;
             Name = name;
         }
 
         Input input;
+        Label _buttonText;
+        bool _fitToText;
+
+        List<UiObject> children;
 
         public override void Start() {
             input = ServiceManager.GetService<Input>();
+            children = new List<UiObject>();
+
+            _buttonText = new Label(Name, RenderRectangle.Size, RenderRectangle.Location);
+            Layer = 0.1f;
+            _buttonText.Layer = Layer + 0.1f;
+
+            children.Add(_buttonText);
+
+            Children = children.ToArray();
+
+            base.Start();
         }
 
         public override void LoadContent() {
-            RenderRectangle = new Rectangle(5, 5, 80, 40);
-            Texture = new Texture2D(ServiceManager.GetService<GraphicsDevice>(), 20, 60);
+            if (_fitToText) {
+                _buttonText.LoadContent(); //call the label's LoadContent early so we can get the render rectangle
+                RenderRectangle = new Rectangle(RenderRectangle.Location, _buttonText.RenderRectangle.Size);
+            }
+
+            Texture = new Texture2D(ServiceManager.GetService<GraphicsDevice>(), RenderRectangle.Size);
             Color[] colorData = new Color[RenderRectangle.Width * RenderRectangle.Height];
             for (int i = 0; i < colorData.Length; i++) {
                 colorData[i] = Color.White;
             }
             Texture.SetData(colorData);
 
+            base.LoadContent();
+
             isReady = true;
+        }
+
+        public override void UiDraw(UiSpriteBatch spriteBatch) {
+            base.UiDraw(spriteBatch);
         }
 
         bool mouseEntered;

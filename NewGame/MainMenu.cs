@@ -18,11 +18,16 @@ namespace NewGame {
             UpdateEnabled = true;
             UiDrawEnabled = true;
             GameDrawEnabled = true;
-        }
 
-        public override void Start() {
-            btn = new Button("Example Button");
-            btn.Start();
+            btn = new Button(
+                "Example Button",
+                fitToText: false,
+                size: new Microsoft.Xna.Framework.Point(180, 21),
+                position: new Microsoft.Xna.Framework.Point(200, 20)
+                );
+
+            Objects.Add(btn);
+
             btn.Clicked += (sender, args) => {
                 Console.WriteLine($"[{((Button)sender).Name}] clicked :D");
             };
@@ -32,21 +37,6 @@ namespace NewGame {
             btn.MouseExited += (sender, args) => {
                 Console.WriteLine($"[{((Button)sender).Name}] mouse left :(");
             };
-        }
-
-        public override void LoadContent() {
-            btn?.LoadContent();
-        }
-
-        public override void FixedUpdate(float? delta) {
-            btn.FixedUpdate(delta);
-        }
-
-        public override void GameDraw(SpriteBatch spriteBatch) {
-        }
-
-        public override void UiDraw(UiSpriteBatch spriteBatch) {
-            btn.UiDraw(spriteBatch);
         }
 
         public override void Dispose() {

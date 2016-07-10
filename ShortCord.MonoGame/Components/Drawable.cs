@@ -5,6 +5,8 @@ namespace ShortCord.MonoGame.Components {
         public bool GameDrawEnabled { get; protected set; } = false;
         public bool UiDrawEnabled { get; protected set; } = false;
 
+        public virtual void LoadContent() { }
+        public virtual void UnloadContent() { }
         public virtual void GameDraw(SpriteBatch spriteBatch) { }
         public virtual void UiDraw(UiSpriteBatch spriteBatch) { }
     }
