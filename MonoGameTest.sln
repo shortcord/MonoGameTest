@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGameTest", "MonoGameTest\MonoGameTest.csproj", "{D3F9570B-7FA0-4C92-9DA8-94E8A771B376}"
 EndProject
@@ -26,6 +26,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Farseer Physics", "Farseer Physics", "{762BA320-308B-40C6-A958-E68BE34C7FA0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortCord.MonoGame", "ShortCord.MonoGame\ShortCord.MonoGame.csproj", "{86083E1B-5463-4021-A75E-092B9FC550A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3DTest", "3DTest\3DTest.csproj", "{B8ED6A33-2D4B-499F-B447-AEE1FBAF6046}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortCord.MonoGame.Physics", "ShortCord.MonoGame.Physics\ShortCord.MonoGame.Physics.csproj", "{5EBB7578-1E31-4972-97FE-9CD02E64B685}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -107,6 +111,22 @@ Global
 		{86083E1B-5463-4021-A75E-092B9FC550A9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{86083E1B-5463-4021-A75E-092B9FC550A9}.Release|x86.ActiveCfg = Release|Any CPU
 		{86083E1B-5463-4021-A75E-092B9FC550A9}.Release|x86.Build.0 = Release|Any CPU
+		{B8ED6A33-2D4B-499F-B447-AEE1FBAF6046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8ED6A33-2D4B-499F-B447-AEE1FBAF6046}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8ED6A33-2D4B-499F-B447-AEE1FBAF6046}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B8ED6A33-2D4B-499F-B447-AEE1FBAF6046}.Debug|x86.Build.0 = Debug|Any CPU
+		{B8ED6A33-2D4B-499F-B447-AEE1FBAF6046}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8ED6A33-2D4B-499F-B447-AEE1FBAF6046}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8ED6A33-2D4B-499F-B447-AEE1FBAF6046}.Release|x86.ActiveCfg = Release|Any CPU
+		{B8ED6A33-2D4B-499F-B447-AEE1FBAF6046}.Release|x86.Build.0 = Release|Any CPU
+		{5EBB7578-1E31-4972-97FE-9CD02E64B685}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EBB7578-1E31-4972-97FE-9CD02E64B685}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EBB7578-1E31-4972-97FE-9CD02E64B685}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5EBB7578-1E31-4972-97FE-9CD02E64B685}.Debug|x86.Build.0 = Debug|Any CPU
+		{5EBB7578-1E31-4972-97FE-9CD02E64B685}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EBB7578-1E31-4972-97FE-9CD02E64B685}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EBB7578-1E31-4972-97FE-9CD02E64B685}.Release|x86.ActiveCfg = Release|Any CPU
+		{5EBB7578-1E31-4972-97FE-9CD02E64B685}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

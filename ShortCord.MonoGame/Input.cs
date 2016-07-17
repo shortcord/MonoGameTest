@@ -90,19 +90,31 @@ namespace ShortCord.MonoGame {
 
         public bool MouseLeftClicked {
             get {
-                return mouseStates[0].LeftButton == ButtonState.Pressed && mouseStates[1].LeftButton == ButtonState.Released;
+                return PreviousMouseState.LeftButton == ButtonState.Pressed && CurrentMouseState.LeftButton == ButtonState.Released;
             }
         }
 
         public bool MouseRightClicked {
             get {
-                return mouseStates[0].RightButton == ButtonState.Pressed && mouseStates[1].RightButton == ButtonState.Released;
+                return PreviousMouseState.RightButton == ButtonState.Pressed && CurrentMouseState.RightButton == ButtonState.Released;
+            }
+        }
+
+        public bool MouseLeftHeld {
+            get {
+                return CurrentMouseState.LeftButton == ButtonState.Pressed;
+            }
+        }
+        
+        public bool MouseRightHeld {
+            get {
+                return CurrentMouseState.RightButton == ButtonState.Pressed;
             }
         }
 
         public bool MouseWheelUp {
             get {
-                if (mouseStates[0].ScrollWheelValue > mouseStates[1].ScrollWheelValue)
+                if (PreviousMouseState.ScrollWheelValue > CurrentMouseState.ScrollWheelValue)
                     return true;
                 return false;
             }
@@ -110,7 +122,7 @@ namespace ShortCord.MonoGame {
 
         public bool MouseWheelDown {
             get {
-                if (mouseStates[0].ScrollWheelValue < mouseStates[1].ScrollWheelValue)
+                if (PreviousMouseState.ScrollWheelValue < CurrentMouseState.ScrollWheelValue)
                     return true;
                 return false;
             }

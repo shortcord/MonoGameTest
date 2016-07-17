@@ -32,19 +32,17 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Game.cs" />
     <Compile Include="MainMenu.cs" />
+    <Compile Include="PhysicsTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -59,6 +57,10 @@
     <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.WindowsGL.csproj">
       <Project>{6d75e618-19ca-4c51-9546-f10965fbc0b8}</Project>
       <Name>MonoGame.Framework.WindowsGL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShortCord.MonoGame.Physics\ShortCord.MonoGame.Physics.csproj">
+      <Project>{5ebb7578-1e31-4972-97fe-9cd02e64b685}</Project>
+      <Name>ShortCord.MonoGame.Physics</Name>
     </ProjectReference>
     <ProjectReference Include="..\ShortCord.MonoGame\ShortCord.MonoGame.csproj">
       <Project>{86083e1b-5463-4021-a75e-092b9fc550a9}</Project>

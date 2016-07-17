@@ -56,7 +56,7 @@ namespace ShortCord.MonoGame.Ui {
             debug.SetData(colorData);
 
             RenderRectangle = new Rectangle(RenderRectangle.Location, new Point(Texture.Width, Texture.Height));
-            //Origin = RenderRectangle.Location.ToVector2() / 2;
+            Origin = RenderRectangle.Location.ToVector2() / 2;
             isReady = true;
         }
 
@@ -66,7 +66,7 @@ namespace ShortCord.MonoGame.Ui {
                     texture: debug, 
                     position: RenderRectangle.Location.ToVector2(), 
                     color: Color.White, 
-                    //origin: RenderRectangle.Location.ToVector2() / 2,
+                    origin: Origin,
                     layerDepth: 1f);
             }
             base.UiDraw(spriteBatch);

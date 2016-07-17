@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.Xna.Framework;
 using ShortCord.MonoGame.Collections;
 
 namespace ShortCord.MonoGame {
@@ -9,7 +8,7 @@ namespace ShortCord.MonoGame {
 
         public static GameWrapper Game {
             get { return gameRef; }
-            set { if (gameRef != null) { gameRef = value; } }
+            set { if (gameRef == null) { gameRef = value; } }
         }
         
         public static void AddService<T>(T service) where T : class {

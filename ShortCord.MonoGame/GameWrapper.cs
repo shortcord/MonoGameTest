@@ -17,22 +17,55 @@ namespace ShortCord.MonoGame {
         SpriteBatch spriteBatch;
         UiSpriteBatch uiSpriteBatch;
 
+        #region Events
+        /// <summary>
+        /// Event called before <see cref="CurrentLevel.GameDraw(SpriteBatch)"/>
+        /// </summary>
+        public event EventHandler<SpriteBatch> ExtraBeforeGameDraw;
+
+        /// <summary>
+        /// Event called before <see cref="CurrentLevel.UiDraw(UiSpriteBatch)"/>
+        /// </summary>
+        public event EventHandler<UiSpriteBatch> ExtraBeforeUiDraw;
+
+        /// <summary>
+        /// Event called before <see cref="CurrentLevel.Update(float)"/> 
+        /// </summary>
+        public event EventHandler<float> ExtraBeforeUpdate;
+
+        /// <summary>
+        /// Event called before <see cref="CurrentLevel.FixedUpdate(float?)"/>
+        /// </summary>
+        public event EventHandler<float?> ExtraBeforeFixedUpdate;
+
+        /// <summary>
+        /// Event called when <see cref="CurrentLevel"/> changes
+        /// </summary>
+        public event EventHandler<GameLevelDetails> CurrentLevelChanged;
+        #endregion
+
         public float FixedUpdateLoopTime { get; protected set; } = 1 / 60f;
+
+        public Dictionary<string, LevelObject> Levels { get; protected set; }
 
         public LevelObject CurrentLevel {
             get { return _currentLevel; }
             set {
+
+                CurrentLevelChanged?.Invoke(this, value.Details);
+
                 _currentLevel?.Dispose();
                 _currentLevel = value;
             }
         }
-        volatile LevelObject _currentLevel;
+        LevelObject _currentLevel;
 
         public GameWrapper(string WindowTitle, Point? WindowSize = null) : base() {
             ServiceManager.Game = this;
             base.Window.Title = WindowTitle;
 
             GameComponents = new ComponentCollection();
+            Levels = new Dictionary<string, LevelObject>();
 
             if (WindowSize == null) {
                 WindowSize = new Point(800, 600);
@@ -65,7 +98,9 @@ namespace ShortCord.MonoGame {
             //implementation credit @Quincy9000
             //https://github.com/Quincy9000/QuincyGameEnginePractice/blob/master/Code/Engine/HelperClasses/Scene.cs#L98
             accumlator += delta = MathHelper.Clamp(gameTime.ElapsedGameTime.TotalSeconds.ToFloat(), 0f, .25f); //add to accumlator before calling update
-            
+
+            ExtraBeforeUpdate?.Invoke(this, delta);
+
             //call level update first
             if (CurrentLevel != null && CurrentLevel.UpdateEnabled) {
                 CurrentLevel?.Update(delta);
@@ -83,7 +118,8 @@ namespace ShortCord.MonoGame {
 
             //call fixed update last
             while (accumlator >= FixedUpdateLoopTime) {
-                Logger.WriteLine($"FixedUpdate Invoke Delta is: {accumlator} | {FixedUpdateLoopTime}");
+                //Logger.WriteLine($"FixedUpdate Invoke Delta is: {accumlator} | {FixedUpdateLoopTime}");
+                ExtraBeforeFixedUpdate?.Invoke(this, FixedUpdateLoopTime);
                 FixedUpdate(FixedUpdateLoopTime);
                 accumlator -= FixedUpdateLoopTime;
             }
@@ -109,6 +145,8 @@ namespace ShortCord.MonoGame {
             GraphicsDevice.Clear(Color.Pink);
             spriteBatch.Begin();
 
+            ExtraBeforeGameDraw?.Invoke(this, spriteBatch);
+
             if (CurrentLevel != null && CurrentLevel.GameDrawEnabled) {
                 CurrentLevel?.GameDraw(spriteBatch);
             }
@@ -129,6 +167,8 @@ namespace ShortCord.MonoGame {
 
         protected void UiDraw() {
             uiSpriteBatch.Begin(SpriteSortMode.FrontToBack);
+
+            ExtraBeforeUiDraw?.Invoke(this, uiSpriteBatch);
 
             if (CurrentLevel != null && CurrentLevel.UiDrawEnabled) {
                 CurrentLevel?.UiDraw(uiSpriteBatch);

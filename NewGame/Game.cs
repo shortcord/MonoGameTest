@@ -8,7 +8,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using ShortCord.MonoGame;
 using ShortCord.MonoGame.Extensions;
-using System.Diagnostics;
 
 namespace NewGame {
 
@@ -17,13 +16,19 @@ namespace NewGame {
         Input input;
 
         public Game() : base("SC Game Test") {
+            CurrentLevelChanged += (sender, e) => {
+                Logger.WriteLine($"Level Changed {e?.ID} {e?.FriendlyName}");
+            };
             IsMouseVisible = true;
             Window.AllowUserResizing = true;
             Window.AllowAltF4 = false;
-            CurrentLevel = new MainMenu();
 
+            Levels.Add("MainMenu", new MainMenu());
+            Levels.Add("PhysicsTest", new PhysicsTest());
+
+            CurrentLevel = Levels["PhysicsTest"];
         }
-        
+
         protected override void Initialize() {
             GameComponents.Add(input = new Input());
             ServiceManager.AddService(input);
