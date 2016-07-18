@@ -28,48 +28,45 @@ namespace NewGame {
 
         public override void Start() {
             input = ServiceManager.GetService<Input>(); //get input manager
-            
-            World.ContactManager.OnBroadphaseCollision += penis;
         }
-
-        void penis(ref FixtureProxy proxyA, ref FixtureProxy proxyB) {
-            Logger.WriteLine($"{proxyA.ProxyId} {proxyB.ProxyId}");
-        }
-
-        Body floor;
-
 
         public override void LoadContent() {
             texture = new Texture2D(ServiceManager.GetService<GraphicsDevice>(), 25, 25);
             Utilities.FillTexture(ref texture, Color.Blue);
 
-            var floorText = new Texture2D(ServiceManager.GetService<GraphicsDevice>(), 120, 120);
+            var floorText = new Texture2D(ServiceManager.GetService<GraphicsDevice>(), 500, 120);
             Utilities.FillTexture(ref floorText, Color.Red);
 
-            floor = BodyFactory.CreateRectangle(World, ConvertUnits.ToSimUnits(120), ConvertUnits.ToSimUnits(120), 1000f);
-            floor.Position = ConvertUnits.ToSimUnits(Vector2.One * 200);
-            floor.Awake = true;
-            floor.SleepingAllowed = false;
+            var floor = BodyFactory.CreateRectangle(World, ConvertUnits.ToSimUnits(floorText.Width), ConvertUnits.ToSimUnits(floorText.Height), 1f);
+            floor.Position = ConvertUnits.ToSimUnits(new Vector2(floorText.Width, floorText.Height + floorText.Height));
 
             ServiceManager.Game.ExtraBeforeGameDraw += (sender, sb) => {
-                sb.Draw(floorText, ConvertUnits.ToDisplayUnits(floor.Position), Color.White);
+                sb.Draw(
+                    texture: floorText,
+                    position: ConvertUnits.ToDisplayUnits(floor.Position),
+                    origin: floorText.Bounds.Center.ToVector2(),
+                    color: Color.White);
             };
         }
 
         public override void FixedUpdate(float? delta) {
-
+            
                 if (input.KeyPressed(Keys.A)) {
                     World.Enabled = !World.Enabled;
                 }
 
-                if (input.MouseLeftHeld) {
-                    IPhysicsObject pp;  
-                    PhysicsObjects.Add(pp = new PhysicsBody(World, texture, input.CurrentMouseState.PositionV));
-                    pp.Body.SleepingAllowed = false;
+                if (input.MouseLeftClicked) {
+                    PhysicsObject pp;
+                    PhysicsObjects.Add(pp = new PhysicsBody(World, texture, input.CurrentMouseState.PositionV, 100f));
+                    
                     Logger.WriteLine(PhysicsObjects.Count);
                 }
 
             base.FixedUpdate(delta);
+        }
+
+        public override void Dispose() {
+            base.Dispose();
         }
     }
 }

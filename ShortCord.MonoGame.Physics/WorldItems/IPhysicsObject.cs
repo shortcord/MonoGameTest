@@ -7,7 +7,7 @@ using FarseerPhysics.Dynamics;
 using ShortCord.MonoGame.Components;
 
 namespace ShortCord.MonoGame.Physics.WorldItems {
-    public interface IPhysicsObject : IDrawable {
+    public interface IPhysicsObject : IDrawable, IDisposable {
         Body Body { get; }
     }
 }

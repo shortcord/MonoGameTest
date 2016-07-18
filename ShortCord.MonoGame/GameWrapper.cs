@@ -189,5 +189,10 @@ namespace ShortCord.MonoGame {
             CurrentLevel?.UnloadContent();
             base.UnloadContent();
         }
+
+        protected override void Dispose(bool disposing) {
+            CurrentLevel?.Dispose();
+            base.Dispose(disposing);
+        }
     }
 }

@@ -39,5 +39,12 @@ namespace ShortCord.MonoGame.Physics {
             }
         }
 
+        public override void Dispose() {
+            IPhysicsObject[] tempArray = PhysicsObjects.ToArray();
+            for (int i = 0; i < tempArray.Length; i++) {
+                    tempArray[i].Dispose();
+            }
+            base.Dispose();
+        }
     }
 }
