@@ -41,6 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actor.cs" />
+    <Compile Include="Camera\CameraObject.cs" />
+    <Compile Include="Camera\ICamera.cs" />
+    <Compile Include="Camera\LevelCamera.cs" />
     <Compile Include="Collections\ComponentCollection.cs" />
     <Compile Include="Collections\HashList.cs" />
     <Compile Include="Components\Drawable.cs" />
@@ -54,10 +57,12 @@
     <Compile Include="DisabledWarnings.cs" />
     <Compile Include="Extensions\FloatExtenstions.cs" />
     <Compile Include="GameWrapper.cs" />
+    <Compile Include="Graphics\SpriteDefinition.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rectanglef.cs" />
+    <Compile Include="RenderTargetAutomation.cs" />
     <Compile Include="ServiceManager.cs" />
     <Compile Include="UiSpriteBatch.cs" />
     <Compile Include="Ui\Button.cs" />

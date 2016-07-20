@@ -7,6 +7,8 @@ namespace ShortCord.MonoGame.Components {
         public bool GameDrawEnabled { get; protected set; } = false;
         public bool UiDrawEnabled { get; protected set; } = false;
         public bool UpdateEnabled { get; protected set; } = false;
+        public bool IsReady { get; protected set; } = false;
+
 
         public virtual void Start() { }
         public virtual void LoadContent() { }

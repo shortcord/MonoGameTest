@@ -11,7 +11,6 @@ namespace ShortCord.MonoGame.Physics.WorldItems {
             Body = BodyFactory.CreateRectangle(world, ConvertUnits.ToSimUnits(texture.Width), ConvertUnits.ToSimUnits(texture.Height), density, rotation);
             Body.Position = ConvertUnits.ToSimUnits(position ?? Vector2.Zero);
             Body.BodyType = BodyType.Dynamic;
-            Body.OnCollision += base.OnPhysicsCollision;
             Texture = texture;
         }
     }

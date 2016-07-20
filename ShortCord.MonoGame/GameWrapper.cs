@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using ShortCord.MonoGame.Collections;
 using ShortCord.MonoGame.Components;
 using ShortCord.MonoGame.Extensions;
+using ShortCord.MonoGame.Camera;
 
 namespace ShortCord.MonoGame {
     public class GameWrapper : Game {
@@ -16,6 +17,8 @@ namespace ShortCord.MonoGame {
 
         SpriteBatch spriteBatch;
         UiSpriteBatch uiSpriteBatch;
+
+        readonly LevelCamera _camera;
 
         #region Events
         /// <summary>
@@ -46,6 +49,8 @@ namespace ShortCord.MonoGame {
 
         public float FixedUpdateLoopTime { get; protected set; } = 1 / 60f;
 
+        public Matrix GameDrawTransformationMatrix { get; set; } = Matrix.Identity;
+
         public Dictionary<string, LevelObject> Levels { get; protected set; }
 
         public LevelObject CurrentLevel {
@@ -64,12 +69,19 @@ namespace ShortCord.MonoGame {
             ServiceManager.Game = this;
             base.Window.Title = WindowTitle;
 
+            _camera = new LevelCamera(true);
+
+
             GameComponents = new ComponentCollection();
             Levels = new Dictionary<string, LevelObject>();
 
             if (WindowSize == null) {
                 WindowSize = new Point(800, 600);
             }
+
+            GameComponents.Add(_camera);
+
+            ServiceManager.AddService(_camera); //maybe?
 
             ServiceManager.AddService(new GraphicsDeviceManager(this) {
                 PreferredBackBufferWidth = WindowSize.Value.X,
@@ -80,6 +92,13 @@ namespace ShortCord.MonoGame {
         }
 
         protected override void Initialize() {
+            foreach (var item in GameComponents) {
+                var tmpItem = item as GameObject;
+                if (tmpItem != null) {
+                    tmpItem.Start();
+                }
+            }
+
             CurrentLevel?.Start();
             base.Initialize();
         }
@@ -88,6 +107,13 @@ namespace ShortCord.MonoGame {
             ServiceManager.AddService(GraphicsDevice);
             ServiceManager.AddService(spriteBatch = new SpriteBatch(GraphicsDevice));
             ServiceManager.AddService(uiSpriteBatch = new UiSpriteBatch(GraphicsDevice));
+
+            foreach (var item in GameComponents) {
+                var tmpItem = item as GameObject;
+                if (tmpItem != null) {
+                    tmpItem.LoadContent();
+                }
+            }
 
             CurrentLevel?.LoadContent();
         }
@@ -143,7 +169,7 @@ namespace ShortCord.MonoGame {
 
         protected override void Draw(GameTime gameTime) {
             GraphicsDevice.Clear(Color.Pink);
-            spriteBatch.Begin();
+            spriteBatch.Begin(transformMatrix: _camera.TransformationMatrix);
 
             ExtraBeforeGameDraw?.Invoke(this, spriteBatch);
 

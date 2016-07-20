@@ -13,7 +13,7 @@ using ShortCord.MonoGame.Physics.WorldItems;
 namespace ShortCord.MonoGame.Physics {
     public class PhysicsLevelObject : LevelObject {
 
-        protected List<IPhysicsObject> PhysicsObjects;
+        protected List<PhysicsObject> PhysicsObjects;
 
         public World World { get; protected set; }
 
@@ -21,7 +21,7 @@ namespace ShortCord.MonoGame.Physics {
             FixedUpdateEnabled = true;
             GameDrawEnabled = true;
 
-            PhysicsObjects = new List<IPhysicsObject>();
+            PhysicsObjects = new List<PhysicsObject>();
 
             World = new World(gravity ?? new Vector2(0f, 9.82f));
         }
