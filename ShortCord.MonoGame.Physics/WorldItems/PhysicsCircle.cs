@@ -13,7 +13,7 @@ namespace ShortCord.MonoGame.Physics.WorldItems {
             Body = BodyFactory.CreateCircle(world, radius, density);
             Body.Rotation = rotation;
             Body.BodyType = BodyType.Dynamic;
-            Texture = texture;
+            Sprite = new PhysicsSpriteDefinition(this, texture);
         }
     }
 }

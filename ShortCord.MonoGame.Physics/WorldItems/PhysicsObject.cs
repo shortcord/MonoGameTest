@@ -8,12 +8,18 @@ namespace ShortCord.MonoGame.Physics.WorldItems {
     public class PhysicsObject : IPhysicsObject {
         public bool GameDrawEnabled { get; protected set; } = true;
         public bool UiDrawEnabled { get; protected set; } = false;
+        public bool AutoCleanUp { get; private set; } = true;
         public bool IsDisposed { get; private set; }
 
-        public Texture2D Texture { get; protected set; }
-        public Vector2 Origin => new Vector2(Texture.Width, Texture.Height) / 2f;
-        public Vector2 Position => ConvertUnits.ToDisplayUnits(Body.Position);
-        public float Rotation => Body.Rotation;
+        public PhysicsSpriteDefinition Sprite { get; protected set; }
+        public Vector2 Position {
+            get { return ConvertUnits.ToDisplayUnits(Body.Position);}
+            set { Body.Position = ConvertUnits.ToSimUnits(value); }
+        }
+        public float Rotation {
+            get { return Body.Rotation; }
+            set { Body.Rotation = value; }
+        }
 
         public Body Body {
             get { return _body; }
@@ -51,23 +57,17 @@ namespace ShortCord.MonoGame.Physics.WorldItems {
             Body.OnSeparation -= OnPhysicsSeparation;
         }
 
-        public virtual void UiDraw(UiSpriteBatch spriteBatch) { }
-        public void GameDraw(SpriteBatch spriteBatch) {
+        public virtual void UiDraw(UiSpriteBatch spriteBatch, bool debugDraw) { }
+        public void GameDraw(SpriteBatch spriteBatch, bool debugDraw) {
             if (!IsDisposed) {
-                spriteBatch.Draw(
-                    Texture,
-                    position: Position,
-                    origin: Origin,
-                    rotation: Rotation,
-                    color: Color.White
-                );
+                Sprite.Draw(spriteBatch, debugDraw);
             }
         }
-        
+
         public void Dispose() {
             IsDisposed = true;
-            RemoveEvents(); //unsub events to make sure the GC can clean up
-            Texture.Dispose();
+            //RemoveEvents(); //unsub events to make sure the GC can clean up
+            Sprite.Dispose();
             Body.Dispose();
         }
 

@@ -11,7 +11,7 @@ using ShortCord.MonoGame.Components;
 namespace ShortCord.MonoGame.Camera {
     public class CameraObject : GameObject, ICamera {
         public Vector2 Position { get; set; } = Vector2.Zero;
-        public Vector2 Size { get { return new Vector2(_viewport.Width, _viewport.Height); } }
+        public Vector2 Size { get { return _viewport.Bounds.Size.ToVector2(); } }
         public Vector2 Origin { get { return Size / 2f; } }
         public float Rotation { get; set; } = 0f;
         public float Zoom { get; set; } = 1f;
@@ -26,7 +26,7 @@ namespace ShortCord.MonoGame.Camera {
                     * Matrix.CreateTranslation(new Vector3(-Origin, 0f))
                     * Matrix.CreateRotationZ(Rotation)
                     * Matrix.CreateScale(Zoom)
-                    * Matrix.CreateTranslation(new Vector3(_viewport.Bounds.Width * 0.5f, _viewport.Bounds.Height * 0.5f, 0f));
+                    * Matrix.CreateTranslation(new Vector3(new Vector2(_viewport.Width, _viewport.Height) / 2f, 0f));
             }
         }
 

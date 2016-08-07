@@ -60,7 +60,7 @@ namespace ShortCord.MonoGame.Ui {
             isReady = true;
         }
 
-        public override void UiDraw(UiSpriteBatch spriteBatch) {
+        public override void UiDraw(UiSpriteBatch spriteBatch, bool debugDraw) {
             if (isReady) {
                 spriteBatch.Draw(
                     texture: debug, 
@@ -69,7 +69,7 @@ namespace ShortCord.MonoGame.Ui {
                     origin: Origin,
                     layerDepth: 1f);
             }
-            base.UiDraw(spriteBatch);
+            base.UiDraw(spriteBatch, debugDraw);
         }
 
         public override void UnloadContent() {

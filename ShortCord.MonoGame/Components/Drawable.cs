@@ -7,7 +7,7 @@ namespace ShortCord.MonoGame.Components {
 
         public virtual void LoadContent() { }
         public virtual void UnloadContent() { }
-        public virtual void GameDraw(SpriteBatch spriteBatch) { }
-        public virtual void UiDraw(UiSpriteBatch spriteBatch) { }
+        public virtual void GameDraw(SpriteBatch spriteBatch, bool debugDraw) { }
+        public virtual void UiDraw(UiSpriteBatch spriteBatch, bool debugDraw) { }
     }
 }

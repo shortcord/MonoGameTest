@@ -59,8 +59,8 @@ namespace ShortCord.MonoGame.Ui {
             isReady = true;
         }
 
-        public override void UiDraw(UiSpriteBatch spriteBatch) {
-            base.UiDraw(spriteBatch);
+        public override void UiDraw(UiSpriteBatch spriteBatch, bool debugDraw) {
+            base.UiDraw(spriteBatch, debugDraw);
         }
 
         bool mouseEntered;

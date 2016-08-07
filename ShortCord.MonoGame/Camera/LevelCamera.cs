@@ -14,18 +14,15 @@ namespace ShortCord.MonoGame.Camera {
 
         SpriteDefinition _crosshair;
         SpriteFont _font;
-        bool _debug;
         Input _input;
 
-        public LevelCamera(bool debug = false) : base() {
-            _debug = debug;
+        public LevelCamera() : base() {
             UiDrawEnabled = true;
             UpdateEnabled = true;
         }
 
         public override void Start() {
             base.Start();
-            Position += (Vector2.Right * 50) + (Vector2.Down * 10);
             _input = ServiceManager.GetService<Input>();
             ServiceManager.Game.Window.ClientSizeChanged += Window_ClientSizeChanged;
         }
@@ -54,17 +51,16 @@ namespace ShortCord.MonoGame.Camera {
 
         public Vector2 mousePos, StWmousePos, WtSmousePos;
 
-        public override void UiDraw(UiSpriteBatch spriteBatch) {
+        public override void UiDraw(UiSpriteBatch spriteBatch, bool debugDraw) {
             if (IsReady) {
 
                 spriteBatch.DrawString(spriteFont: _font,
                                        text: $"Camera {Position} {Origin}\n{Rotation} {Zoom}\n{Size}\n{mousePos} {StWmousePos} {WtSmousePos}",
                                        position: Vector2.Zero,
-                                       color: Color.Black
-                                       );
+                                       color: Color.Black);
 
-                if (_debug) {
-                    spriteBatch.Draw(Utilities.CreateBasicTexture(), VisibleArea, new Color(Color.Black, 0.3f));
+                if (debugDraw) {
+                    spriteBatch.Draw(Utilities.CreateBasicTexture(), VisibleArea.Center.ToVector2(), new Color(Color.Black, 0.3f));
                     _crosshair.DebugDraw(spriteBatch);
                 }
 

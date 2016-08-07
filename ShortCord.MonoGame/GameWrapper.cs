@@ -69,7 +69,7 @@ namespace ShortCord.MonoGame {
             ServiceManager.Game = this;
             base.Window.Title = WindowTitle;
 
-            _camera = new LevelCamera(true);
+            _camera = new LevelCamera();
 
 
             GameComponents = new ComponentCollection();
@@ -174,14 +174,14 @@ namespace ShortCord.MonoGame {
             ExtraBeforeGameDraw?.Invoke(this, spriteBatch);
 
             if (CurrentLevel != null && CurrentLevel.GameDrawEnabled) {
-                CurrentLevel?.GameDraw(spriteBatch);
+                CurrentLevel?.GameDraw(spriteBatch, CurrentLevel.Debug);
             }
 
             foreach (var item in GameComponents) {
                 var tmpItem = item as Components.IDrawable;
                 if (tmpItem != null) {
                     if (tmpItem.GameDrawEnabled) {
-                        tmpItem.GameDraw(spriteBatch);
+                        tmpItem.GameDraw(spriteBatch, CurrentLevel.Debug);
                     }
                 }
             }
@@ -197,14 +197,14 @@ namespace ShortCord.MonoGame {
             ExtraBeforeUiDraw?.Invoke(this, uiSpriteBatch);
 
             if (CurrentLevel != null && CurrentLevel.UiDrawEnabled) {
-                CurrentLevel?.UiDraw(uiSpriteBatch);
+                CurrentLevel?.UiDraw(uiSpriteBatch, CurrentLevel.Debug);
             }
 
             foreach (var item in GameComponents) {
                 var tmpItem = item as Components.IDrawable;
                 if (tmpItem != null) {
                     if (tmpItem.UiDrawEnabled) {
-                        tmpItem.UiDraw(uiSpriteBatch);
+                        tmpItem.UiDraw(uiSpriteBatch, CurrentLevel.Debug);
                     }
                 }
             }

@@ -8,10 +8,10 @@ namespace ShortCord.MonoGame.Components {
     public abstract class LevelObject : GameObject, IGameLevel {
 
         public GameLevelDetails Details { get; protected set; }
+        public bool Debug { get; protected set; }
 
         protected ContentManager Content { get; set; }
         protected GameObjectCollection Objects { get; set; }
-
         protected LevelObject() {
             Content = new ContentManager(ServiceManager.GetService<GameServiceContainer>(), "Content");
             Objects = new GameObjectCollection();
@@ -45,18 +45,18 @@ namespace ShortCord.MonoGame.Components {
             }
         }
 
-        public override void GameDraw(SpriteBatch spriteBatch) {
+        public override void GameDraw(SpriteBatch spriteBatch, bool debugDraw) {
             foreach (var item in Objects) {
                if (item.GameDrawEnabled) {
-                    item.GameDraw(spriteBatch);
+                    item.GameDraw(spriteBatch, Debug);
                 }
             }
         }
 
-        public override void UiDraw(UiSpriteBatch spriteBatch) {
+        public override void UiDraw(UiSpriteBatch spriteBatch, bool debugDraw) {
             foreach (var item in Objects) {
                 if (item.UiDrawEnabled) {
-                    item.UiDraw(spriteBatch);
+                    item.UiDraw(spriteBatch, Debug);
                 }
             }
         }

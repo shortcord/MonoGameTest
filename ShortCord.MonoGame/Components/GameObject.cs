@@ -15,8 +15,8 @@ namespace ShortCord.MonoGame.Components {
         public virtual void UnloadContent() { }
         public virtual void FixedUpdate(float? delta) { }
         public virtual void Update(float delta) { }
-        public virtual void GameDraw(SpriteBatch spriteBatch) { }
-        public virtual void UiDraw(UiSpriteBatch spriteBatch) { }
+        public virtual void GameDraw(SpriteBatch spriteBatch, bool debugDraw) { }
+        public virtual void UiDraw(UiSpriteBatch spriteBatch, bool debugDraw) { }
         public virtual void Dispose() { }
     }
 }

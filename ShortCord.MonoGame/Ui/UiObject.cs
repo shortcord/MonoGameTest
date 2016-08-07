@@ -100,13 +100,13 @@ namespace ShortCord.MonoGame.Ui {
             }
         }
 
-        public override void UiDraw(UiSpriteBatch spriteBatch) {
+        public override void UiDraw(UiSpriteBatch spriteBatch, bool debugDraw) {
             if (isReady && UiDrawEnabled) {
                 for (int i = 0; i < Children.Length; i++) {
                     var child = Children[i];
                     if (child.UiDrawEnabled) {
 
-                        child.UiDraw(spriteBatch);
+                        child.UiDraw(spriteBatch, debugDraw);
 
                         spriteBatch.Draw(
                             texture: child.Texture, 

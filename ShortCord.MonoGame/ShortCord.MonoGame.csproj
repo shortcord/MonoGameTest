@@ -57,7 +57,9 @@
     <Compile Include="DisabledWarnings.cs" />
     <Compile Include="Extensions\FloatExtenstions.cs" />
     <Compile Include="GameWrapper.cs" />
+    <Compile Include="Graphics\ISpriteDefinition.cs" />
     <Compile Include="Graphics\SpriteDefinition.cs" />
+    <Compile Include="Graphics\SpriteDefinitionBase.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

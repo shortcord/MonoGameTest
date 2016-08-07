@@ -36,11 +36,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Debug\ContactPoint.cs" />
-    <Compile Include="Debug\DebugView.cs" />
-    <Compile Include="Debug\DebugView.DrawMethods.cs" />
-    <Compile Include="Debug\PrimitiveBatch.cs" />
-    <Compile Include="Debug\StringData.cs" />
+    <Compile Include="Graphics\PhysicsSpriteDefinition.cs" />
     <Compile Include="PhysicsLevelObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WorldItems\IPhysicsObject.cs" />

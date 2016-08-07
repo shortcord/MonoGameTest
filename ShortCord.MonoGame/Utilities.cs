@@ -100,6 +100,16 @@ namespace ShortCord.MonoGame {
             texture.SetData(colorData);
         }
 
+        public static Texture2D Copy(this Texture2D texture) {
+            Color[] data = new Color[texture.Width * texture.Height];
+            texture.GetData(data);
+
+            Texture2D toReturn = new Texture2D(graphicsDevice, texture.Width, texture.Height);
+            toReturn.SetData(data);
+
+            return toReturn;
+        }
+
         /// <summary>
         /// Create a <see cref="Texture2D"/> border<para/>
         /// For easier use see <see cref="CreateBorderedTexture(Point?, Color?)"/>
